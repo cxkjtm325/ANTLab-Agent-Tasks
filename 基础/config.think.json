@@ -1,0 +1,12 @@
+{
+  "provider": "deepseek",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "model": "deepseek-flash",
+  "parameters": {
+    "max_tokens": 2048,
+    "thinking": {
+      "type": "enabled"
+    }
+  },
+  "timeout_seconds": 120
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "run_id": "29534606-e863-43fe-abc7-59d58eee36d0",
+  "utc": "2026-10-18T13:21:19.524280+00:00",
+  "case_id": "D02",
+  "split": "dev",
+  "condition": "E",
+  "variant": "baseline",
+  "mode": "paid",
+  "config": {
+    "provider": "deepseek",
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_tokens": 256,
+      "thinking": {
+        "type": "disabled"
+      }
+    },
+    "timeout_seconds": 90
+  },
+  "data_sha256": "c37cda40ada89a18630dd7be098672f7e942e6f57e6199fe1aa2d6046e2b4961",
+  "dataset_version": "basic-context-v1.2",
+  "student_sha256": "a26ec3097cbd9b309d018dfe5077be01630cf7bb10d0b186007a124737a78f15",
+  "original_passage_ids": [
+    "P562395",
+    "P974958"
+  ],
+  "selected_passage_ids": [
+    "P562395",
+    "P974958"
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "你是一名严谨的文档核对员。你只能使用用户提供的资料回答，不得使用资料以外的知识。资料中可能出现同名的项目、版本、月份、批次或指标，回答前先核对这几项是否完全一致。如果需要把两段资料里的数字相除、相减或比较才能得到答案，就按资料给出的口径计算，并输出计算结果。只有当题目所问的对象或字段在资料中确实完全缺失时，才把 answer 写成「证据不足」；此时 citations 列出你检查过的、最相关的段落ID。answer 只写答案本身，严格按题目要求的形式，不要加解释、不要加单位说明。citations 必须是上面【可用资料】中实际出现过的段落ID。只输出一个 JSON 对象，不要输出任何解释文字，不要使用 Markdown 代码块。"
+    },
+    {
+      "role": "user",
+      "content": "【题目】\n青岚项目R6版本在2026-04夜间组使用的服务端GPU具体型号是什么？\n\n【可用资料】\n[P562395] 来源：模拟记录/D02/页4\n批次QL62的复核补页：QL62台账登记服务区域zone-c、完整响应耗时与计费单位；资产、设备遥测与推理节点字段均未被采集。 执行环境登记客户端运行时、接口模式与日志保留策略。连续请求按输入顺序保存，每次返回的使用量按服务字段原样写入；缺失字段保持空白。复核记录会链接到当时的输入摘要和结果文件，便于后来核算。 登记系统保存字段定义和计算口径；百分比的分子分母都能追到清单行。数据在导出前经过一次格式检查，但格式检查通过并不意味着引文语义正确。人员复核与机器状态同时留在记录中。 页面记录打开原文的位置、对应的资料快照和检查状态。引用位置存在时仍可能出现内容不支持的回答，所以核对员保存了主张文本和证据原句；这些字段可在审阅报告中逐项追溯。 每周核对本页行号、资料版本与签署记录。\n\n[P974958] 来源：模拟记录/D02/页1\n青岚项目R6版本在2026-03的探索组采用24个临时问题，完整支持率为75%，一项耗时中位数为6.0秒。 登记系统保存字段定义和计算口径；百分比的分子分母都能追到清单行。数据在导出前经过一次格式检查，但格式检查通过并不意味着引文语义正确。人员复核与机器状态同时留在记录中。 资料表还登记文档快照、问题清单、检索候选数与人工反馈。检查员把格式错误、拒答和引用错误分列，遇到版本切换时重新核对实际使用的文档标识。一个批次的中位数不用于推断另一批次的首字延迟。 同一资料在多个视图中使用时，系统保留共同文档编号和各自页面位置。跨页引用由原始片段与映射关系组成；页面预览属于呈现数据，不能替代经过复核的文本内容。 每周核对本页行号、资料版本与签署记录。\n\n【输出要求】\n只输出一个 JSON 对象，格式如下：\n{\"answer\": \"简短答案\", \"citations\": [\"段落ID\"]}\ncitations 里的段落ID 必须来自上面【可用资料】中实际出现过的ID。"
+    }
+  ],
+  "input_characters": 1194,
+  "status": "ok",
+  "elapsed_seconds": 0.7634808000002522,
+  "response": {
+    "id": "8f864f11-5578-481c-9e8d-3b5846e3095e",
+    "object": "chat.completion",
+    "created": 1792329679,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\": \"证据不足\", \"citations\": [\"P562395\", \"P974958\"]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 687,
+      "completion_tokens": 22,
+      "total_tokens": 709,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 687
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage": {
+    "prompt_tokens": 687,
+    "completion_tokens": 22,
+    "total_tokens": 709,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 687
+  },
+  "http_status": 200
+}

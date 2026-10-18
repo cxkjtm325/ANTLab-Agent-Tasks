@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "run_id": "91b95a9c-f404-4b21-99bc-346ecc602e44",
+  "utc": "2026-10-18T13:43:54.879424+00:00",
+  "case_id": "T07",
+  "split": "evaluation",
+  "condition": "K",
+  "variant": "baseline",
+  "mode": "paid",
+  "config": {
+    "provider": "deepseek",
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "parameters": {
+      "temperature": 0,
+      "max_tokens": 256,
+      "thinking": {
+        "type": "disabled"
+      }
+    },
+    "timeout_seconds": 90
+  },
+  "data_sha256": "c37cda40ada89a18630dd7be098672f7e942e6f57e6199fe1aa2d6046e2b4961",
+  "dataset_version": "basic-context-v1.2",
+  "student_sha256": "78defc4c039ab57c373e1c32db2e2163bfe12eb2ae42230b3bdd7a1eca7eabfa",
+  "original_passage_ids": [
+    "P313278",
+    "P802784"
+  ],
+  "selected_passage_ids": [
+    "P313278",
+    "P802784"
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": "你是一名严谨的文档核对员。你只能使用用户提供的资料回答，不得使用资料以外的知识。资料中可能出现同名的项目、版本、月份、批次或指标，回答前先核对这几项是否完全一致。题目里的指标名称可能与资料中的措辞不完全相同。遇到比例类指标（率、百分比）时，只要资料给出了可用的计数，就必须按资料写明的口径相除并输出百分数，不得因为资料里没有出现该指标的名字而回答「证据不足」。如果需要把两段资料里的数字相除、相减或比较才能得到答案，就计算后输出结果。只有当题目所问的具体对象（型号、编号、名称、字段）在资料中完全没有出现，或所需的分母无法确定时，才把 answer 写成「证据不足」；此时 citations 列出你检查过的、最相关的段落ID。answer 只写答案本身，严格按题目要求的形式。citations 必须是上面【可用资料】中实际出现过的段落ID。只输出一个 JSON 对象，不要输出任何解释文字，不要使用 Markdown 代码块。"
+    },
+    {
+      "role": "user",
+      "content": "【题目】\n按知秋项目R5版本2026-08资源表的决策规则，应选择哪项方案？只输出方案名称。\n\n【可用资料】\n[P313278] 来源：模拟记录/T07/页1\n知秋项目R5版本在2026-08的记录：资源表ZQ58记录甲完整支持84%、P50为6.1秒、2次调用；乙87%、7.4秒、3次；丙86%、6.8秒、2次。 选择表由产品与质量人员共同签署，先检查资格条件，再比较剩余方案。若部分输入在第一次执行时失败，表格仍保留该行。后续的修复记录引用原行号，避免把测试后的改善写回初次结果。 本页还记录版本升级后的回滚入口、会话恢复尝试和文档区域映射状态。摘要用于快速浏览，正式决定仍依据签署规则及原始检查项。只有项目、版本、窗口、批次一致的记录才能放在一次决策中比较。 本组清单由两名核对员独立抽读，意见不一致的项目保留两份初判和仲裁日期。机器生成的建议只在旁列展示，正式签署使用可定位原文、计算口径和原始执行记录。 每周核对本页行号、资料版本与签署记录。\n\n[P802784] 来源：模拟记录/T07/页2\n知秋项目R5版本在2026-08的迁移批次XQ60处理相近题目；该批次统计80项输入，64项得到支持，候选流程耗时为5.9秒，快照S19完成初步定位。 登记系统保存字段定义和计算口径；百分比的分子分母都能追到清单行。数据在导出前经过一次格式检查，但格式检查通过并不意味着引文语义正确。人员复核与机器状态同时留在记录中。 资料表还登记文档快照、问题清单、检索候选数与人工反馈。检查员把格式错误、拒答和引用错误分列，遇到版本切换时重新核对实际使用的文档标识。一个批次的中位数不用于推断另一批次的首字延迟。 同一资料在多个视图中使用时，系统保留共同文档编号和各自页面位置。跨页引用由原始片段与映射关系组成；页面预览属于呈现数据，不能替代经过复核的文本内容。 每周核对本页行号、资料版本与签署记录。\n\n【输出要求】\n只输出一个 JSON 对象，格式如下：\n{\"answer\": \"简短答案\", \"citations\": [\"段落ID\"]}\ncitations 里的段落ID 必须来自上面【可用资料】中实际出现过的ID。"
+    }
+  ],
+  "input_characters": 1324,
+  "status": "ok",
+  "elapsed_seconds": 0.660045299999183,
+  "response": {
+    "id": "1a24f886-bdda-4fde-af16-e7d6f191538b",
+    "object": "chat.completion",
+    "created": 1792331034,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"answer\": \"证据不足\", \"citations\": [\"P313278\", \"P802784\"]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 791,
+      "completion_tokens": 22,
+      "total_tokens": 813,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 663
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage": {
+    "prompt_tokens": 791,
+    "completion_tokens": 22,
+    "total_tokens": 813,
+    "prompt_tokens_details": {
+      "cached_tokens": 128
+    },
+    "prompt_cache_hit_tokens": 128,
+    "prompt_cache_miss_tokens": 663
+  },
+  "http_status": 200
+}

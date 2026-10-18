@@ -1,4 +1,8 @@
-runs/
+config.local.json
+.env
+__pycache__/
+*.pyc
+# runs/ 不忽略：题目要求原始响应与失败记录入库
 config.local.json
 .env
 __pycache__/

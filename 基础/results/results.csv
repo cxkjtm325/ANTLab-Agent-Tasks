@@ -1,0 +1,69 @@
+﻿run_id,split,case_id,condition,variant,attempt,mode,api_status,http_status,elapsed_seconds,usage_source,prompt_tokens,completion_tokens,format_ok,answer_raw,citations,citations_from_input,citations_cover_key_ids,judgment,reason
+c4719bd7-53d3-4ff3-869f-9cf401ee96fb,dev,D01,E,baseline,首次,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+895c0c64-3398-4c00-9713-f9973c80a365,dev,D01,E,baseline,重试1,paid,http_error,401,0.144,,,,否,,,否,,技术失败,API状态=http_error HTTP=401
+8c1ada50-a4e1-4c90-8c5e-7a560529dbe7,dev,D01,E,baseline,重试2,paid,http_error,401,0.127,,,,否,,,否,,技术失败,API状态=http_error HTTP=401
+5575ba8c-b184-4bed-bcec-57f4f1f28aab,dev,D01,E,baseline,重试3,paid,http_error,401,0.133,,,,否,,,否,,技术失败,API状态=http_error HTTP=401
+a1d95ebc-c551-4976-aee2-33eabdaaf27f,dev,D01,E,baseline,重试4,paid,ok,200,1.485,API usage字段,676,256,否,,,否,,格式错误,内容不是含 answer/citations 的合法JSON对象
+6b8e6682-6e01-4a41-9347-9d029ae31ff6,dev,D01,E,baseline,重试5,paid,ok,200,0.948,API usage字段,651,22,是,证据不足,"[""P312446"", ""P898100""]",是,,错误,应为 80%；68/85=80%。
+77cd441b-4dd8-453b-859e-b96766e5c1a2,dev,D01,E,baseline,重试6,paid,ok,200,0.724,API usage字段,728,22,是,80%,"[""P312446"", ""P898100""]",是,,正确,
+29534606-e863-43fe-abc7-59d58eee36d0,dev,D02,E,baseline,首次,paid,ok,200,0.763,API usage字段,687,22,是,证据不足,"[""P562395"", ""P974958""]",是,,正确,
+e30cf6d3-b024-434d-b1fe-75c9b823571d,dev,D01,E,baseline,重试7,paid,ok,200,1.099,API usage字段,728,22,是,证据不足,"[""P312446"", ""P898100""]",是,,错误,应为 80%；68/85=80%。
+9d0aafda-380e-4075-a386-98bee2a21174,dev,D01,E,baseline,重试8,paid,ok,200,2.52,API usage字段,753,419,是,80%,"[""P312446"", ""P898100""]",是,,正确,
+865c45c2-a7a2-4578-9906-2e4fbbce71dd,dev,D03,R0,baseline,首次,paid,ok,200,0.844,API usage字段,1870,23,是,1.8,"[""P695887"", ""P419087""]",是,,正确,
+6bcea6d5-14df-4cd9-8999-112356a09e52,dev,D02,R0,baseline,首次,paid,ok,200,0.834,API usage字段,1849,22,是,证据不足,"[""P406170"", ""P562395""]",是,,正确,
+67626bf2-0772-41b0-a8b5-156809fa8f5f,dev,D01,R0,baseline,首次,paid,ok,200,0.992,API usage字段,1859,47,是,证据不足,"[""P312446"", ""P898100"", ""P765807"", ""P771469"", ""P868948"", ""P191745"", ""P133261""]",是,,错误,应为 80%；68/85=80%。
+fa364886-e015-420f-8390-563411627283,dev,D04,R0,baseline,首次,paid,ok,200,0.703,API usage字段,1871,22,是,配置丙,"[""P579223"", ""P611709""]",是,,正确,
+9fe052f9-83a7-4bd1-b211-12c25e04364a,dev,D01,R0,baseline,重试1,paid,ok,200,0.719,API usage字段,1917,22,是,80%,"[""P312446"", ""P898100""]",是,,正确,
+a5d87756-3111-43cb-aafd-3c418141eaa9,dev,D02,R0,baseline,重试1,paid,ok,200,0.434,API usage字段,1907,22,是,证据不足,"[""P406170"", ""P562395""]",是,,正确,
+7847020d-4c77-402e-9912-43ebb10ef31f,dev,D03,R0,baseline,重试1,paid,ok,200,0.876,API usage字段,1928,23,是,1.8,"[""P695887"", ""P419087""]",是,,正确,
+92f5be59-bfa6-468c-b2d5-662bb9f4d2ec,dev,D02,R0,baseline,重试2,paid,ok,200,0.477,API usage字段,1907,22,是,证据不足,"[""P406170"", ""P562395""]",是,,正确,
+5d4972db-63d8-4e1e-8235-f1f1d0773a45,dev,D01,R0,baseline,重试2,paid,ok,200,0.845,API usage字段,1917,24,是,80.0%,"[""P312446"", ""P898100""]",是,,正确,
+a58b985b-9419-43c6-9510-41953639cf21,dev,D04,R0,baseline,重试1,paid,ok,200,0.93,API usage字段,1929,22,是,配置丙,"[""P579223"", ""P611709""]",是,,正确,
+c27c684b-cb38-41a7-9a09-605ffb246477,dev,D03,R0,improved,首次,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+5de696b0-d9b9-4b68-8770-aa2af3188e86,dev,D02,R0,improved,首次,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+f2f81455-aac7-47e1-b39b-6bd651d5d570,dev,D01,R0,improved,首次,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+5dd7b1c6-b523-4230-b2a6-7cd0548e3bbc,dev,D04,R0,improved,首次,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+b324f26f-e0f7-4cc5-8100-6492bac5294e,dev,D03,R0,improved,重试1,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+4a81ecff-c913-4654-8d84-d8d35665d2de,dev,D02,R0,improved,重试1,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+92a035c2-9341-4451-b297-cf25c94008d0,dev,D01,R0,improved,重试1,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+3875adef-0d40-44b4-a14c-c14fe21597ac,dev,D04,R0,improved,重试1,dry,dry_run,,,,,,否,,,否,,技术失败,API状态=dry_run HTTP=None
+4a708bbc-ef2a-4839-a2ae-5f2c5b66c67e,evaluation,T08,R2,baseline,首次,paid,ok,200,0.772,API usage字段,1916,27,是,证据不足,"[""P183430"", ""P223300"", ""P436140""]",是,是,错误,应为 K17；只有 K17 文本问答、区域定位、会话恢复三项通过
+00e2db0a-5219-4eb7-a005-28b90d28c54e,evaluation,T04,R0,baseline,首次,paid,ok,200,0.499,API usage字段,1927,22,是,流程乙,"[""P758661"", ""P660995""]",是,是,正确,
+f7193682-bfac-45b5-96c1-7a7d9433387e,evaluation,T05,K,baseline,首次,paid,ok,200,0.762,API usage字段,768,22,是,证据不足,"[""P286497"", ""P371242""]",是,否,正确,
+3bc84ba5-512c-4ec5-b5e6-cca8318fb010,evaluation,T03,R0,baseline,首次,paid,ok,200,0.801,API usage字段,1920,23,是,2.6,"[""P385105"", ""P362285""]",是,是,正确,
+36b6bb2e-e7c9-4f1d-8395-d09b14ac8aad,evaluation,T03,R2,baseline,首次,paid,ok,200,0.735,API usage字段,1920,23,是,2.6,"[""P385105"", ""P362285""]",是,是,正确,
+8a2299c4-cde7-4d4d-983c-74249e065640,evaluation,T08,R1,baseline,首次,paid,ok,200,1.299,API usage字段,1916,27,是,证据不足,"[""P183430"", ""P223300"", ""P436140""]",是,是,错误,应为 K17；只有 K17 文本问答、区域定位、会话恢复三项通过
+8a36cf67-c745-498d-b45a-3146159a5863,evaluation,T04,R1,baseline,首次,paid,ok,200,0.722,API usage字段,1927,22,是,流程乙,"[""P758661"", ""P660995""]",是,是,正确,
+beaac445-401b-4fc4-a3a0-4a9889139df7,evaluation,T02,R1,baseline,首次,paid,ok,200,0.649,API usage字段,1912,22,是,76%,"[""P552476"", ""P169676""]",是,是,正确,
+eb651964-5eba-41c1-ad9b-3103361d134f,evaluation,T07,R1,baseline,首次,paid,ok,200,0.638,API usage字段,1934,27,是,证据不足,"[""P313278"", ""P850395"", ""P802784""]",是,是,错误,应为 丙；完整支持率至少 85% 且 P50 不高于 7 秒，只有丙 86%
+91b95a9c-f404-4b21-99bc-346ecc602e44,evaluation,T07,K,baseline,首次,paid,ok,200,0.66,API usage字段,791,22,是,证据不足,"[""P313278"", ""P802784""]",是,否,错误,应为 丙；完整支持率至少 85% 且 P50 不高于 7 秒，只有丙 86%
+dc9cc4f9-bfa7-442f-8fdb-f035a7209176,evaluation,T04,K,baseline,首次,paid,ok,200,0.676,API usage字段,803,22,是,证据不足,"[""P758661"", ""P194167""]",是,否,错误,应为 流程乙；规则在 P660995：先要求错误证据不超过 3 条，再最大化召回，流程名称和调用次数不参与第一轮。数据在 P758661：甲错误 6、乙错误 2、丙错误 5，只有乙合格，所以选流程乙
+ac2f5fd5-b23f-401f-bb00-c1651947a319,evaluation,T02,R0,baseline,首次,paid,ok,200,0.768,API usage字段,1912,22,是,76%,"[""P552476"", ""P169676""]",是,是,正确,
+d2979de8-52c6-4420-8bc5-702000163338,evaluation,T03,K,baseline,首次,paid,ok,200,0.815,API usage字段,791,23,是,3.5,"[""P385105"", ""P728510""]",是,否,错误,应为 2.6；P385105：基础链路（WS84，36 个固定问题）完整响应耗时中位数 9.4 秒。P362285：候选链路同为 36 个问题、固定输入顺序，中位数 6.8 秒。9.4 − 6.8 = 2.6，所以是 2.6 秒。
+05e4b0fa-ef32-45a9-8ece-a54f9425c985,evaluation,T04,R2,baseline,首次,paid,ok,200,0.864,API usage字段,1927,27,是,证据不足,"[""P758661"", ""P194167"", ""P660995""]",是,是,错误,应为 流程乙；规则在 P660995：先要求错误证据不超过 3 条，再最大化召回，流程名称和调用次数不参与第一轮。数据在 P758661：甲错误 6、乙错误 2、丙错误 5，只有乙合格，所以选流程乙
+960b8968-56cd-41f3-8a17-37e6306d0a86,evaluation,T05,R2,baseline,首次,paid,ok,200,0.905,API usage字段,1902,27,是,证据不足,"[""P371242"", ""P286497"", ""P452207""]",是,是,正确,
+e5fd3e9c-42f9-4456-8d2b-3f0b6dcfa89d,evaluation,T06,K,baseline,首次,paid,ok,200,0.777,API usage字段,787,19,是,25.0%,"[""P873502""]",是,否,正确,
+d8c774e1-43a4-4df7-9598-d34f12670f85,evaluation,T01,R0,baseline,首次,paid,ok,200,0.592,API usage字段,1931,27,是,证据不足,"[""P555495"", ""P130348"", ""P761989""]",是,是,错误,应为 S24；S23 缺坐标映射、S25 有 3 项未关闭，只有 S24 三项齐全
+57e90d05-dcd2-4080-84e6-5d97192e2bbf,evaluation,T01,K,baseline,首次,paid,ok,200,0.8,API usage字段,804,22,是,证据不足,"[""P555495"", ""P130348""]",是,否,错误,应为 S24；S23 缺坐标映射、S25 有 3 项未关闭，只有 S24 三项齐全
+38412b5a-cd54-47f6-9102-0b1a5e79f61b,evaluation,T01,R1,baseline,首次,paid,ok,200,0.742,API usage字段,1931,32,是,证据不足,"[""P555495"", ""P408739"", ""P130348"", ""P306998""]",是,否,错误,应为 S24；S23 缺坐标映射、S25 有 3 项未关闭，只有 S24 三项齐全
+65098263-5ad2-46c7-9b42-fb5307c74bb8,evaluation,T07,R0,baseline,首次,paid,ok,200,1.107,API usage字段,1934,21,是,乙,"[""P313278"", ""P850395""]",是,是,错误,应为 丙；完整支持率至少 85% 且 P50 不高于 7 秒，只有丙 86%
+e9ab48ba-ee65-4e56-9cf6-832c3a5fbf40,evaluation,T06,R2,baseline,首次,paid,ok,200,1.165,API usage字段,1918,22,是,25%,"[""P873502"", ""P721388""]",是,是,正确,
+c259da8f-e71f-45a9-b3fc-b3514ed286ee,evaluation,T06,R0,baseline,首次,paid,ok,200,0.685,API usage字段,1918,22,是,25%,"[""P873502"", ""P721388""]",是,是,正确,
+a659c2a2-97ba-4f6a-881b-e3751c157f3b,evaluation,T07,R2,baseline,首次,paid,ok,200,0.548,API usage字段,1934,22,是,证据不足,"[""P313278"", ""P850395""]",是,是,错误,应为 丙；完整支持率至少 85% 且 P50 不高于 7 秒，只有丙 86%
+583769d1-fd9b-4bed-80bc-1e7a8a9c1afb,evaluation,T02,K,baseline,首次,paid,ok,200,0.749,API usage字段,784,19,是,80.0%,"[""P500295""]",是,否,错误,应为 76%；冻结评测集固定 100 条主张，76 条完全支持
+2254c31d-c312-40a4-9a30-ca8615fe5d6e,evaluation,T05,R1,baseline,首次,paid,ok,200,0.671,API usage字段,1902,27,是,证据不足,"[""P286497"", ""P371242"", ""P925403""]",是,否,正确,
+064829a8-2c1f-4541-9e6b-524352e5ba7d,evaluation,T02,R2,baseline,首次,paid,ok,200,0.839,API usage字段,1912,22,是,76%,"[""P552476"", ""P169676""]",是,是,正确,
+d9e65d34-ce80-4e7a-ab23-05793c867c96,evaluation,T05,R0,baseline,首次,paid,ok,200,1.06,API usage字段,1902,27,是,证据不足,"[""P286497"", ""P371242"", ""P925403""]",是,否,正确,
+bf12d2dd-a95d-40af-868e-4c662fa1ee3d,evaluation,T08,R0,baseline,首次,paid,ok,200,0.795,API usage字段,1916,27,是,证据不足,"[""P436140"", ""P183430"", ""P223300""]",是,是,错误,应为 K17；只有 K17 文本问答、区域定位、会话恢复三项通过
+d3fb4054-bf06-405a-9be3-9e3a4068118a,evaluation,T03,R1,baseline,首次,paid,ok,200,0.713,API usage字段,1920,23,是,2.6,"[""P385105"", ""P362285""]",是,是,正确,
+154aceca-821f-4c3b-ac03-3557bc1f4cf3,evaluation,T06,R1,baseline,首次,paid,ok,200,0.743,API usage字段,1918,17,是,25%,"[""P873502""]",是,否,正确,
+c81ad3ae-59ce-422e-9607-ed5973dcdd84,evaluation,T01,R2,baseline,首次,paid,ok,200,0.83,API usage字段,1931,27,是,证据不足,"[""P555495"", ""P761989"", ""P564279""]",是,是,错误,应为 S24；S23 缺坐标映射、S25 有 3 项未关闭，只有 S24 三项齐全
+21b86e8a-436c-4688-aea7-ea6a9ca30dff,evaluation,T08,K,baseline,首次,paid,ok,200,0.724,API usage字段,798,22,是,证据不足,"[""P436140"", ""P183430""]",是,否,错误,应为 K17；只有 K17 文本问答、区域定位、会话恢复三项通过
+f2dd3a0c-b778-483f-bb89-978c7df6c163,evaluation,T02,R0,improved,首次,paid,ok,200,0.716,API usage字段,1912,22,是,76%,"[""P552476"", ""P169676""]",是,是,正确,
+8a4a7ea1-80c8-444d-9e1b-819e0afd44c5,evaluation,T07,R0,improved,首次,paid,ok,200,0.792,API usage字段,1934,27,是,证据不足,"[""P313278"", ""P850395"", ""P802784""]",是,是,错误,应为 丙；完整支持率至少 85% 且 P50 不高于 7 秒，只有丙 86%
+c9682714-fd6d-4610-bedc-6a2b083fd4ce,evaluation,T04,R0,improved,首次,paid,ok,200,0.614,API usage字段,1927,22,是,流程乙,"[""P758661"", ""P660995""]",是,是,正确,
+00f2f91e-5db4-4948-9ca8-1f2c7a89ff15,evaluation,T05,R0,improved,首次,paid,ok,200,0.915,API usage字段,1902,32,是,证据不足,"[""P286497"", ""P452207"", ""P925403"", ""P371242""]",是,是,正确,
+2dc6b596-6272-49bf-aa02-af74ecd0e90d,evaluation,T03,R0,improved,首次,paid,ok,200,0.873,API usage字段,1920,23,是,2.6,"[""P385105"", ""P362285""]",是,是,正确,
+5b37e3be-5147-49e6-8fd3-8150aae15aeb,evaluation,T06,R0,improved,首次,paid,ok,200,0.754,API usage字段,1918,22,是,25%,"[""P873502"", ""P721388""]",是,是,正确,
+46bc11d8-6694-4d0c-b808-801c36ce1d88,evaluation,T01,R0,improved,首次,paid,ok,200,0.69,API usage字段,1931,27,是,证据不足,"[""P555495"", ""P761989"", ""P130348""]",是,是,错误,应为 S24；S23 缺坐标映射、S25 有 3 项未关闭，只有 S24 三项齐全
+6324ac16-2fe9-4139-b3bd-d731f44be183,evaluation,T08,R0,improved,首次,paid,ok,200,0.856,API usage字段,1916,27,是,证据不足,"[""P183430"", ""P223300"", ""P436140""]",是,是,错误,应为 K17；只有 K17 文本问答、区域定位、会话恢复三项通过
