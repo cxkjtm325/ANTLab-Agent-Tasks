@@ -1,0 +1,69 @@
+[
+  {
+    "label": "V1_R04_query_reordered",
+    "request": {
+      "query": "gpu resource cancel",
+      "doc_ids": [
+        "alpha"
+      ],
+      "snapshot": "v2",
+      "k": 2
+    },
+    "evidence": [
+      "b04"
+    ],
+    "citations": [
+      "b04"
+    ],
+    "locator_status": "valid",
+    "support_status": "not_checked",
+    "judgment_source": "locator_only",
+    "cache_hit": false,
+    "status": "ok",
+    "answer": "点击取消就保证GPU立即停止计算并释放资源。"
+  },
+  {
+    "label": "V2_R05_query_reordered",
+    "request": {
+      "query": "beta metadata",
+      "doc_ids": [
+        "beta"
+      ],
+      "snapshot": "v1",
+      "k": 2
+    },
+    "evidence": [
+      "b05"
+    ],
+    "citations": [
+      "b05"
+    ],
+    "locator_status": "valid",
+    "support_status": "not_checked",
+    "judgment_source": "locator_only",
+    "cache_hit": false,
+    "status": "ok",
+    "answer": "文档编号为beta。"
+  },
+  {
+    "label": "B1_snapshot_not_exist",
+    "request": {
+      "query": "timeout request threshold",
+      "doc_ids": [
+        "alpha"
+      ],
+      "snapshot": "v9",
+      "k": 2
+    },
+    "evidence": [],
+    "citations": [
+      "b01"
+    ],
+    "locator_status": "invalid",
+    "support_status": "not_checked",
+    "judgment_source": "locator_only",
+    "cache_hit": false,
+    "status": "ok",
+    "answer": "请求超时阈值为30秒。"
+  }
+]

@@ -1,11 +1,91 @@
 <!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>系统失效诊断 · 离线样机</title>
-<style>body{max-width:960px;margin:32px auto;font:16px system-ui;padding:0 16px}button,select{padding:8px;margin:6px}pre{white-space:pre-wrap;background:#f2f5f8;padding:18px}small{color:#555}</style>
-<h1>系统失效诊断</h1><p>合成材料与固定响应离线重放；没有模型API调用。</p>
-<select id="cases"></select><label><input type="checkbox" id="reset">运行前清空状态</label><button id="run">运行所选案例</button>
-<p><small>观察请求顺序如何影响输出。R01→R02请保持状态；其他独立案例可勾选清空。候选人需完善差异、来源与验证状态展示。</small></p>
-<pre id="out">等待执行</pre>
+<style>
+body{max-width:900px;margin:30px auto;font:15px/1.7 system-ui;padding:0 14px}
+h1{font-size:21px}h2{font-size:15px;margin:20px 0 6px;color:#444;border-bottom:1px solid #ddd;padding-bottom:3px}
+button,select{padding:7px;margin:5px 5px 5px 0}
+pre{white-space:pre-wrap;background:#f2f5f8;padding:14px;font-size:12px}
+table{border-collapse:collapse;width:100%;margin:6px 0}
+td,th{border:1px solid #ddd;padding:5px;text-align:left;font-size:14px;vertical-align:top}
+th{background:#fafafa;width:170px}
+.bad{color:#b00020;font-weight:700}.ok{color:#0a6b2d;font-weight:700}
+.ev{background:#fafafa;border-left:3px solid #ccc;padding:5px 9px;margin:5px 0}
+</style>
+<h1>系统失效诊断 · 离线样机</h1>
+<p>合成材料与固定响应离线重放，无模型 API 调用。</p>
+<select id="c"></select><label><input type="checkbox" id="r" checked> 运行前清空状态</label><button id="b">运行</button>
+<p><small>R01→R02 不要勾选"清空"；其余独立案例可勾选。</small></p>
+<div id="p"></div>
+<h2>原始响应</h2><pre id="o">等待执行</pre>
 <script>
-const el=document.getElementById('cases'),out=document.getElementById('out');
-fetch('/api/cases').then(r=>r.json()).then(d=>d.cases.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.id+' · '+c.request.doc_ids.join(',')+' / '+c.request.snapshot+' · '+c.request.query;el.append(o)})).catch(e=>out.textContent=String(e));
-document.getElementById('run').onclick=async()=>{try{const r=await fetch('/api/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({case_id:el.value,reset:document.getElementById('reset').checked})});out.textContent=JSON.stringify(await r.json(),null,2)}catch(e){out.textContent=String(e)}};
+var BEF={R01:'supported',R02:'supported',R03:'not_checked',R04:'supported',R05:'supported',R06:'supported',R07:'not_checked'};
+var sel=document.getElementById('c'),panel=document.getElementById('p'),raw=document.getElementById('o');
+function mk(t,txt,cn){var e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cn)e.className=cn;return e;}
+function tbl(rows){var t=mk('table');rows.forEach(function(r){t.appendChild(r);});return t;}
+function row(k,v){var tr=mk('tr');tr.appendChild(mk('th',k));var td=mk('td');td.appendChild(mk('span',v));tr.appendChild(td);return tr;}
+
+fetch('/api/cases').then(function(r){return r.json();}).then(function(d){
+  d.cases.forEach(function(x){
+    var o=mk('option');o.value=x.id;
+    o.textContent=x.id+' · '+x.request.doc_ids.join(',')+' / '+x.request.snapshot+' · '+x.request.query;
+    sel.appendChild(o);
+  });
+});
+
+document.getElementById('b').onclick=function(){
+  fetch('/api/run',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({case_id:sel.value,reset:document.getElementById('r').checked})})
+  .then(function(r){return r.json();})
+  .then(function(x){raw.textContent=JSON.stringify(x,null,2);draw(sel.value,x);});
+};
+
+function draw(id,x){
+  var q=x.request||{},ev=x.evidence||[],snaps=[];
+  ev.forEach(function(e){if(snaps.indexOf(e.snapshot)<0)snaps.push(e.snapshot);});
+  var snapOk=ev.every(function(e){return e.snapshot===q.snapshot;});
+  var docOk=ev.every(function(e){return (q.doc_ids||[]).indexOf(e.doc_id)>=0;});
+  panel.textContent='';
+
+  panel.appendChild(mk('h2','当前请求'));
+  panel.appendChild(tbl([
+    row('案例',id), row('query',q.query||''),
+    row('资料范围','doc_ids='+(q.doc_ids||[]).join(',')+'　snapshot='+q.snapshot+'　k='+q.k),
+    row('缓存命中',String(x.cache_hit))
+  ]));
+
+  panel.appendChild(mk('h2','资料实际快照'));
+  if(!ev.length){
+    panel.appendChild(mk('p','证据 0 条：请求 doc_ids='+(q.doc_ids||[]).join(',')+' / '+q.snapshot+'，实际未返回任何段落。','bad'));
+  }else{
+    var p1=mk('p','请求 '+q.snapshot+'　实际 '+snaps.join(',')+' → ');
+    p1.appendChild(mk('span',snapOk?'一致':'不一致',snapOk?'ok':'bad'));
+    panel.appendChild(p1);
+    var p2=mk('p','范围 '+(q.doc_ids||[]).join(',')+' → ');
+    p2.appendChild(mk('span',docOk?'证据都在范围内':'证据越出范围',docOk?'ok':'bad'));
+    panel.appendChild(p2);
+  }
+
+  panel.appendChild(mk('h2','答案与证据原文'));
+  var pa=mk('p');pa.appendChild(mk('b','回答：'));pa.appendChild(mk('span',x.answer||''));
+  panel.appendChild(pa);
+  ev.forEach(function(e){
+    var d=mk('div',null,'ev');
+    d.appendChild(mk('div','['+e.id+'] '+e.doc_id+' / '+e.snapshot+' / 第 '+e.page+' 页'));
+    d.appendChild(mk('div',e.text));
+    panel.appendChild(d);
+  });
+
+  panel.appendChild(mk('h2','验证来源与状态'));
+  panel.appendChild(tbl([
+    row('引用 citations',JSON.stringify(x.citations||[])),
+    row('定位 locator_status',String(x.locator_status)),
+    row('支持 support_status',String(x.support_status)),
+    row('判定来源 judgment_source',String(x.judgment_source))
+  ]));
+
+  panel.appendChild(mk('h2','修复前后'));
+  panel.appendChild(tbl([
+    row('修复前 support_status',(BEF[id]||'无记录')+'（runs/baseline.json）'),
+    row('修复后 support_status',String(x.support_status))
+  ]));
+}
 </script></html>

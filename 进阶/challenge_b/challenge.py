@@ -22,8 +22,8 @@ class Engine:
             valid = bool(citations) and set(citations).issubset({b['id'] for b in evidence})
             result = {'answer': draft['answer'], 'citations': citations, 'evidence': evidence,
                       'locator_status': 'valid' if valid else 'invalid',
-                      'support_status': 'supported' if valid else 'not_checked',
-                      'judgment_source': 'rule', 'status': 'ok'}
+                      'support_status': 'not_checked',
+                      'judgment_source': 'locator_only', 'status': 'ok'}
             self.cache[key] = copy.deepcopy(result)
         result.update(request_id=str(uuid.uuid4()), request=copy.deepcopy(request), cache_hit=hit,
                       elapsed_ms=(time.perf_counter()-started)*1000, run_kind='offline_replay')
