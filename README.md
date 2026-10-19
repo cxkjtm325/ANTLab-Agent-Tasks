@@ -34,7 +34,7 @@
 - 上游仓库：`https://github.com/Shiina413/ANTLab-Agent-Tasks`
 - 本仓库：`https://github.com/cxkjtm325/ANTLab-Agent-Tasks`
 - 修改前源码基点 commit：`a587aa3`
-- 最终 commit：【最终提交后填】
+- - 最终 commit：`2e6c0b6`（代码与数据）；其后一次仅补填本行的登记提交，未改动任何代码或结果文件
 - 查看本人全部改动：`git diff a587aa3 -- 进阶/challenge_b/` 与 `git log --oneline a587aa3..HEAD`
 
 改动清单：`进阶/challenge_b/challenge.py` 两行（见 `fix.diff`）；`进阶/challenge_b/index.html` 整份重写；新增 `进阶/challenge_b/variants.py`、`diag.md`、`fix.diff`、`runs/` 下三份结果文件；仓库根目录新增 `report.md`、`decisions.md`、`declaration.md`、本 `README.md`。
