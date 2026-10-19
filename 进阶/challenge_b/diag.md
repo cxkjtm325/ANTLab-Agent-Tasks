@@ -1,4 +1,4 @@
-记录时间：____（本地时间）
+记录时间：10.19.00：14（本地时间）
 
 ## 观察（只是事实）
 1. R04 的 request 是 alpha / v2，k=2。返回 evidence=['b04']，locator_status='valid'，support_status='supported'。

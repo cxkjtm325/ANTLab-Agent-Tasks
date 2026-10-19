@@ -1,6 +1,6 @@
 # 基础与进阶整合报告
 
-报名编号：<编号>　进阶选择：B（系统失效诊断）　代码版本：a587aa3　数据/配置hash：基础 `c37cda40ada89a18630dd7be098672f7e942e6f57e6199fe1aa2d6046e2b4961`；进阶B `进阶/challenge_b/data.json` `f3ba571d72e2836221ed3026ac764d8e0da569fc5b8bd895f702cbd2896296a4`
+　进阶选择：B（系统失效诊断）　代码版本：冻结版本 `2e6c0b6`，最终提交见收集表登记　数据/配置hash：基础 `c37cda40ada89a18630dd7be098672f7e942e6f57e6199fe1aa2d6046e2b4961`；进阶B `进阶/challenge_b/data.json` `f3ba571d72e2836221ed3026ac764d8e0da569fc5b8bd895f702cbd2896296a4`
 
 ## 1 完成概览
 
